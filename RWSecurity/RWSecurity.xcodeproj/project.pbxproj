@@ -10,6 +10,9 @@
 		E24680FE235EAAEB00F6AE95 /* RWSecurity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24680F4235EAAEB00F6AE95 /* RWSecurity.framework */; };
 		E2468103235EAAEB00F6AE95 /* RWSecurityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2468102235EAAEB00F6AE95 /* RWSecurityTests.swift */; };
 		E2468105235EAAEB00F6AE95 /* RWSecurity.h in Headers */ = {isa = PBXBuildFile; fileRef = E24680F7235EAAEB00F6AE95 /* RWSecurity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E26904F52361430C00E99A62 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26904F42361430C00E99A62 /* KeychainWrapper.swift */; };
+		E26904F72361432800E99A62 /* KeychainOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26904F62361432800E99A62 /* KeychainOperations.swift */; };
+		E26904F92361433800E99A62 /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26904F82361433800E99A62 /* KeychainConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		E24680FD235EAAEB00F6AE95 /* RWSecurityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RWSecurityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2468102235EAAEB00F6AE95 /* RWSecurityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWSecurityTests.swift; sourceTree = "<group>"; };
 		E2468104235EAAEB00F6AE95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E26904F42361430C00E99A62 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		E26904F62361432800E99A62 /* KeychainOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperations.swift; sourceTree = "<group>"; };
+		E26904F82361433800E99A62 /* KeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 		E246810F235EAC7A00F6AE95 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				E26904F82361433800E99A62 /* KeychainConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -107,6 +114,7 @@
 		E2468110235EAC8500F6AE95 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				E26904F62361432800E99A62 /* KeychainOperations.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 		E2468111235EAC8C00F6AE95 /* Wrapper */ = {
 			isa = PBXGroup;
 			children = (
+				E26904F42361430C00E99A62 /* KeychainWrapper.swift */,
 			);
 			path = Wrapper;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 				TargetAttributes = {
 					E24680F3235EAAEA00F6AE95 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
 					};
 					E24680FC235EAAEB00F6AE95 = {
 						CreatedOnToolsVersion = 11.0;
@@ -227,6 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26904F52361430C00E99A62 /* KeychainWrapper.swift in Sources */,
+				E26904F72361432800E99A62 /* KeychainOperations.swift in Sources */,
+				E26904F92361433800E99A62 /* KeychainConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +385,7 @@
 		E2468109235EAAEB00F6AE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -387,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodolfo.RWSecurity;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -395,6 +410,7 @@
 		E246810A235EAAEB00F6AE95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -418,6 +434,7 @@
 		E246810C235EAAEB00F6AE95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RWSecurityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -435,6 +452,7 @@
 		E246810D235EAAEB00F6AE95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RWSecurityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
