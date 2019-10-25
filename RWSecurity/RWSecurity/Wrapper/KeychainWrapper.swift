@@ -22,5 +22,5 @@ public class KeychainWrapper: NSObject {
             try KeychainOperations.add(value: value, account: account)
         }
     }
-    
+
 }

@@ -11,7 +11,10 @@
  */
 internal class KeychainOperations: NSObject {
     /**
-     
+     This function evalute if exist keychain data
+     - parameter account: idValue
+     - returns: Value to know if this data is correct
+     - throws: Error to create keychain
      */
     internal static func exists(account: String) throws -> Bool {
         let status = SecItemCopyMatching([
@@ -20,7 +23,7 @@ internal class KeychainOperations: NSObject {
             kSecAttrService: service,
             kSecReturnData: false
         ] as NSDictionary, nil)
-        
+
         switch status {
         case errSecSuccess:
             return true
@@ -31,7 +34,10 @@ internal class KeychainOperations: NSObject {
         }
     }
     /**
-    
+     Add a value the keychain
+     - parameter value: valueSave
+     - parameter account: idValue
+     - throws: Error to save keychain
     */
     internal static func add(value: Data, account: String) throws {
         let status = SecItemAdd([
@@ -50,7 +56,7 @@ internal class KeychainOperations: NSObject {
         let status = SecItemUpdate([
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: account,
-            kSecAttrService: service,
+            kSecAttrService: service
         ] as NSDictionary, [
             kSecValueData: value
         ] as NSDictionary)

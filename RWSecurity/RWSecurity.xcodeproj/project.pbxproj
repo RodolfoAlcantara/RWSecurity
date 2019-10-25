@@ -149,6 +149,7 @@
 				E24680F0235EAAEA00F6AE95 /* Sources */,
 				E24680F1235EAAEA00F6AE95 /* Frameworks */,
 				E24680F2235EAAEA00F6AE95 /* Resources */,
+				E242A5C023629140007D21E9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -231,6 +232,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E242A5C023629140007D21E9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"Swiftlint is not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E24680F0235EAAEA00F6AE95 /* Sources */ = {
@@ -401,6 +422,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodolfo.RWSecurity;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -426,6 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodolfo.RWSecurity;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
