@@ -62,4 +62,26 @@ internal class KeychainOperations: NSObject {
         ] as NSDictionary)
         guard status == errSecSuccess else { throw Errors.keychainUpdatingError }
     }
+    /**
+        Function to retrieve an item to keychain
+     - parameters account: Account name for keychain item
+     */
+    internal static func retreive(account:String) throws -> Data? {
+        var result: AnyObject?
+        let status = SecItemCopyMatching([
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: account,
+            kSecAttrService: service,
+            kSecReturnData: true,
+            ] as NSDictionary, &result)
+        
+        switch status {
+        case errSecSuccess:
+            return result as? Data
+        case errSecItemNotFound:
+            return nil
+        default:
+            throw Errors.keychainGetError
+        }
+    }
 }
