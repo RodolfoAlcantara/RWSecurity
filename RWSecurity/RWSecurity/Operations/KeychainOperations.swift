@@ -62,4 +62,16 @@ internal class KeychainOperations: NSObject {
         ] as NSDictionary)
         guard status == errSecSuccess else { throw Errors.keychainUpdatingError }
     }
+    /**
+     Delete value of the keychain
+     -  parameter account: idValue
+     - throws: Error at deleting an item
+     **/
+    internal static func delete(account: String) throws {
+        let status = SecItemDelete([
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrService: service
+        ] as NSDictionary)
+        guard status == errSecSuccess else {throw Errors.keychainDeletingError}
+    }
 }
