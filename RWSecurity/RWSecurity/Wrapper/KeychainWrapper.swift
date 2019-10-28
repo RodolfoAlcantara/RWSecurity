@@ -22,5 +22,19 @@ public class KeychainWrapper: NSObject {
             try KeychainOperations.add(value: value, account: account)
         }
     }
+    /**
+     Deletes an account
+     - parameter account: Account to delete
+     - throws Error at deleting items
+     */
+    public static func delete(account: String) throws {
+        if try KeychainOperations.exists(account: account) {
+            //Call delete
+            try KeychainOperations.delete(account: account)
+        } else {
+            /// MARK Finish this function with error handling
+            throw Errors.keychainDeletingError
+        }
+    }
 
 }
