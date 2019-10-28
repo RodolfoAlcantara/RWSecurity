@@ -33,6 +33,7 @@ public class KeychainWrapper: NSObject {
             try KeychainOperations.delete(account: account)
         } else {
             /// MARK Finish this function with error handling
+            throw Errors.keychainDeletingError
         }
     }
 

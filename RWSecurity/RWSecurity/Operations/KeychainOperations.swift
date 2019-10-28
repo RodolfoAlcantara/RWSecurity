@@ -72,6 +72,6 @@ internal class KeychainOperations: NSObject {
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service
         ] as NSDictionary)
-        guard status == errSecSuccess else {throw Errors.keychainDeletingError}
+        guard status == errSecSuccess else { throw Errors.keychainDeletingError }
     }
 }
