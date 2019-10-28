@@ -19,4 +19,6 @@ internal enum Errors: Error {
     case keychainAddingError
     /// Error updating data
     case keychainUpdatingError
+    /// Error deleteAll data
+    case keychainDeleteAllError
 }

@@ -62,4 +62,15 @@ internal class KeychainOperations: NSObject {
         ] as NSDictionary)
         guard status == errSecSuccess else { throw Errors.keychainUpdatingError }
     }
+    /**
+     Delete all items the keychain( no receive parameter)
+     - throws: Error to delete all keychain
+     */
+    internal static func deleteAll() throws {
+        let status = SecItemDelete([
+            kSecClass: kSecClassGenericPassword,
+            ] as NSDictionary)
+        guard status == errSecSuccess else {
+            throw Errors.keychainDeleteAllError }
+    }
 }
