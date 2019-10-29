@@ -23,6 +23,18 @@ public class KeychainWrapper: NSObject {
         }
     }
     /**
+     Funtion to retrieve an item in "Data" format (if not present, return nil)
+     - parameters account: Account name for keychain item
+     - Throws: Return error for to get data.
+     */
+    public static func get(account: String) throws -> Data? {
+        if try KeychainOperations.exists(account: account) {
+            return try KeychainOperations.retreive(account: account)
+        } else {
+            throw Errors.keychainGetError
+        }
+    }
+    /**
      Deletes an account
      - parameter account: Account to delete
      - throws Error at deleting items
@@ -36,5 +48,4 @@ public class KeychainWrapper: NSObject {
             throw Errors.keychainDeletingError
         }
     }
-
 }
