@@ -21,4 +21,8 @@ internal enum Errors: Error {
     case keychainUpdatingError
     /// Error get data
     case keychainGetError
+    /// Error at deleting an element
+    case keychainDeletingError
+    /// Error deleteAll data
+    case keychainDeleteAllError
 }

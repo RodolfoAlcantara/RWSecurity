@@ -63,7 +63,7 @@ internal class KeychainOperations: NSObject {
         guard status == errSecSuccess else { throw Errors.keychainUpdatingError }
     }
     /**
-        Function to retrieve an item to keychain
+     Function to retrieve an item to keychain
      - parameters account: Account name for keychain item
      */
     internal static func retreive(account:String) throws -> Data? {
@@ -83,5 +83,27 @@ internal class KeychainOperations: NSObject {
         default:
             throw Errors.keychainGetError
         }
+    /*
+     Delete value of the keychain
+     - parameter account: idValue
+     - throws: Error at deleting an item
+     **/
+    internal static func delete(account: String) throws {
+        let status = SecItemDelete([
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrService: service
+        ] as NSDictionary)
+        guard status == errSecSuccess else { throw Errors.keychainDeletingError }
+    }
+    /**
+     Delete all items the keychain( no receive parameter)
+     - throws: Error to delete all keychain
+     */
+    internal static func deleteAll() throws {
+        let status = SecItemDelete([
+            kSecClass: kSecClassGenericPassword,
+            ] as NSDictionary)
+        guard status == errSecSuccess else {
+            throw Errors.keychainDeleteAllError }
     }
 }
