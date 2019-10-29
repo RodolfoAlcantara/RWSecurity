@@ -66,15 +66,14 @@ internal class KeychainOperations: NSObject {
      Function to retrieve an item to keychain
      - parameters account: Account name for keychain item
      */
-    internal static func retreive(account:String) throws -> Data? {
+    internal static func retreive(account: String) throws -> Data? {
         var result: AnyObject?
         let status = SecItemCopyMatching([
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: account,
             kSecAttrService: service,
-            kSecReturnData: true,
+            kSecReturnData: true
             ] as NSDictionary, &result)
-        
         switch status {
         case errSecSuccess:
             return result as? Data
@@ -83,6 +82,7 @@ internal class KeychainOperations: NSObject {
         default:
             throw Errors.keychainGetError
         }
+    }
     /*
      Delete value of the keychain
      - parameter account: idValue
@@ -101,7 +101,7 @@ internal class KeychainOperations: NSObject {
      */
     internal static func deleteAll() throws {
         let status = SecItemDelete([
-            kSecClass: kSecClassGenericPassword,
+            kSecClass: kSecClassGenericPassword
             ] as NSDictionary)
         guard status == errSecSuccess else {
             throw Errors.keychainDeleteAllError }

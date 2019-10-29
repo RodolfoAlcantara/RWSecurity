@@ -48,4 +48,7 @@ public class KeychainWrapper: NSObject {
             throw Errors.keychainDeletingError
         }
     }
+    public static func deleteAll() throws {
+        try KeychainOperations.deleteAll()
+    }
 }
