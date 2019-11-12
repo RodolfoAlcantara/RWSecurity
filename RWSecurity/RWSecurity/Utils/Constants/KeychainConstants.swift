@@ -26,3 +26,12 @@ internal enum Errors: Error {
     /// Error deleteAll data
     case keychainDeleteAllError
 }
+
+internal enum BiometricErrors: Error {
+    ///Error biometrics is not supported
+    case notSupported
+    ///Error at evaluating biometrics
+    case cantEvaluate
+    ///Error on authentication
+    case incorrectResult
+}

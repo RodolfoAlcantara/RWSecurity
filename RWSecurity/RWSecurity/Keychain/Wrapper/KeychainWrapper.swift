@@ -11,25 +11,27 @@
  */
 public class KeychainWrapper: NSObject {
     /**
-     
      */
-    public static func set(value: Data, account: String) throws {
+    public static func set(value: Data, account: String, key: String) throws {
         if try KeychainOperations.exists(account: account) {
             // Mandar a llamar update
-            try KeychainOperations.update(value: value, account: account)
+            try KeychainOperations.update(value: Cryptor.encrypt(key: key, dataToEncrypt: value), account: account)
         } else {
             // Simplemente agregar el dato
-            try KeychainOperations.add(value: value, account: account)
+            try KeychainOperations.add(value: Cryptor.encrypt(key: key, dataToEncrypt: value), account: account)
         }
     }
     /**
-     Funtion to retrieve an item in "Data" format (if not present, return nil)
+     Function to retrieve an item in "Data" format (if not present, return nil)
      - parameters account: Account name for keychain item
      - Throws: Return error for to get data.
      */
-    public static func get(account: String) throws -> Data? {
+    public static func get(account: String, key: String) throws -> Data? {
         if try KeychainOperations.exists(account: account) {
-            return try KeychainOperations.retreive(account: account)
+            if let rescuedData = try KeychainOperations.retreive(account: account) {
+                return try Cryptor.decrypt(key: key, dataToDecrypt: rescuedData)
+            }
+            throw Errors.keychainGetError
         } else {
             throw Errors.keychainGetError
         }

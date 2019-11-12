@@ -91,6 +91,7 @@ internal class KeychainOperations: NSObject {
     internal static func delete(account: String) throws {
         let status = SecItemDelete([
             kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: account,
             kSecAttrService: service
         ] as NSDictionary)
         guard status == errSecSuccess else { throw Errors.keychainDeletingError }
